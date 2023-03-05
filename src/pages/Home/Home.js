@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 
@@ -21,7 +21,7 @@ const Home = () => {
                         />
                     </h1>
                     <p className="mb-5 text-xl font-bold text-white">Every Food Reviewed Here</p>
-                    <button className="btn btn-primary"><Link>Leave A Review</Link></button>
+                    <button className="btn"><Link>Leave A Review</Link></button>
                 </div>
             </div>
         </div>
