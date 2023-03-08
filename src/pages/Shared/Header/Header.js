@@ -5,7 +5,7 @@ import logo from '../../../assets/logo.png'
 const Header = () => {
     const menuItems = <>
         <li className='font-bold'><Link to='/'>Home</Link></li>
-        <li className='font-bold'><Link to='/'>Services</Link></li>
+        <li className='font-bold'><Link to='/foods'>Foods</Link></li>
         <li className='font-bold'><Link to='/'>About Us</Link></li>
     </>
     return (
