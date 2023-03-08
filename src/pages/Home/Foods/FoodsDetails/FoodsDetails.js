@@ -15,13 +15,13 @@ const FoodsDetails = () => {
                 </PhotoProvider>
             </figure>
             <div className="card-body">
-                <h2 className="card-title font-bold">{name}</h2>
+                <h2 className="text-2xl text-center font-bold">{name}</h2>
                 <p>{details}</p>
-                <div className="card-actions justify-end">
+                <div className="card-actions mt-5 justify-center mb-5">
                     <div className="badge badge-error">{price}tk</div>
                     <div className="badge badge-warning">{rName}</div>
-                    <Link to='/foods'><button className="btn">Back</button></Link>
                 </div>
+                <Link to='/foods'><button className="btn glass">Back</button></Link>
             </div>
         </div>
     );

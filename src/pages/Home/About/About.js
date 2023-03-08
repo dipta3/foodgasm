@@ -17,7 +17,7 @@ const About = () => {
                     <p className='font-bold text-red-600 mb-5'>WHO WE ARE</p>
                     <h1 className="text-5xl font-bold">Thousand Reviews In One Place.</h1>
                     <p className="py-6">User have rights to give review what they feel about the particular food. Restaurant review sites are important because so many potential customers use them. There’s no avoiding online reviews, so it’s best to accept their influence and work to improve ratings and reviews.</p>
-                    <button className="btn btn-active btn-ghost"><Link>Leave A Review</Link></button>
+                    <button className="btn btn-outline"><Link to='/foods'>Leave A Review</Link></button>
                 </div>
             </div>
         </div>

@@ -33,7 +33,7 @@ const FoodCard = ({ food }) => {
                     <div className="badge badge-outline">{price} tk</div>
                 </div>
                 <div className="card-actions justify-end">
-                    <Link to={`/foods/${_id}`}><button className="btn ">Leave A Review</button></Link>
+                    <Link to={`/foods/${_id}`}><button className="btn btn-outline">Leave A Review</button></Link>
                 </div>
             </div>
         </div >
