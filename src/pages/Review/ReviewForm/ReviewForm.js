@@ -9,7 +9,13 @@ const ReviewForm = () => {
             <figure><img src={img} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="font-bold text-xl">{name}</h2>
-                <p className='mt-2 p-2'>{details}</p>
+                {
+                    details.length > 200 ?
+                        <>{details.slice(0, 250) + '.....'}
+                        </>
+                        :
+                        <>{details}</>
+                }
                 <div className="card-actions justify-center">
                     <div className="badge badge-error">{price}tk</div>
                     <div className="badge badge-warning">{rName}</div>
