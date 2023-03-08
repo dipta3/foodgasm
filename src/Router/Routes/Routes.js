@@ -21,7 +21,8 @@ const router = createBrowserRouter([
 
             {
                 path: '/foods/:id',
-                element: <ReviewForm></ReviewForm>
+                element: <ReviewForm></ReviewForm>,
+                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
 
             }
         ]
