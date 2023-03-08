@@ -14,6 +14,7 @@ const Banner = () => {
                                 autoStart: true,
                                 loop: true,
                                 cursor: '',
+                                pauseFor: 2500
 
                             }}
                         />
