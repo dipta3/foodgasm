@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-import { AiFillStar } from 'react-icons/ai';
+
 const ReviewForm = () => {
     const { _id, name, img, details, price, rName } = useLoaderData()
     const { user } = useContext(AuthContext);

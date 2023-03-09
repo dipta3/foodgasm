@@ -4,6 +4,7 @@ import Main from '../../Layout/Main';
 import Foods from '../../pages/Home/Foods/Foods';
 import FoodsDetails from '../../pages/Home/Foods/FoodsDetails/FoodsDetails';
 import Home from '../../pages/Home/Home';
+import ReviewShow from '../../pages/Home/ReviewShow/ReviewShow';
 import Login from '../../pages/Login/Login';
 import ReviewForm from '../../pages/Review/ReviewForm/ReviewForm';
 import Reviews from '../../pages/Reviews/Reviews';
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
                 path: '/reviews',
                 element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
             },
+
             {
                 path: '/foods/:id',
                 element: <PrivateRoute><ReviewForm></ReviewForm></PrivateRoute>,
