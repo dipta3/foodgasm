@@ -17,7 +17,7 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+
                 setError(' ')
                 form.reset();
                 navigate('/login')
@@ -25,7 +25,7 @@ const SignUp = () => {
             })
             .catch(error => {
                 setError(error.message)
-                console.error(error)
+
             })
     }
     const handleUpdateUserProfile = (name, photoURL) => {
