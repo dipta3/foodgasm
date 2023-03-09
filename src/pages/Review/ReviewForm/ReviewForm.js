@@ -17,6 +17,7 @@ const ReviewForm = () => {
         const photo = user?.photoURL || 'N/A';
         const message = form.message.value;
         const ratings = form.ratings.value;
+        const ttj = form.ttj.value;
 
         const review = {
             reviewId: _id,
@@ -26,7 +27,8 @@ const ReviewForm = () => {
             photo,
             phone,
             message,
-            ratings
+            ratings,
+            ttj
 
         }
 
