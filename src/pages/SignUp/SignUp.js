@@ -48,13 +48,13 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Your Name</span>
                                 </label>
-                                <input name='name' type="text" placeholder="Your Name" className="input input-bordered" required />
+                                <input name='name' type="text" placeholder="Your Name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input name='photoURL' type="text" placeholder="Your Photo URL" className="input input-bordered" />
+                                <input name='photoURL' type="text" placeholder="(Please provide short link. E.g: 'imagebb' )" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">

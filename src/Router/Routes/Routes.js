@@ -32,13 +32,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/foods/:id',
-                element: <ReviewForm></ReviewForm>,
+                element: <PrivateRoute><ReviewForm></ReviewForm></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
 
             },
             {
                 path: '/foodsDetails/:id',
-                element: <FoodsDetails></FoodsDetails>,
+                element: <PrivateRoute><FoodsDetails></FoodsDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
             }
         ]
