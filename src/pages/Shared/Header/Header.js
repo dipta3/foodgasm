@@ -4,7 +4,14 @@ import logo from '../../../assets/logo.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error =>
+                console.error(error)
+            )
+    }
     const menuItems = <>
         <li className='font-bold'><Link to='/'>Home</Link></li>
         <li className='font-bold'><Link to='/foods'>Foods</Link></li>
@@ -30,7 +37,19 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'><button className='btn btn-outline'>Login</button></Link>
+                {
+                    user?.uid ?
+                        <>
+                            <img className="mask mr-2 mask-squircle" alt='' src={user?.photoURL
+                            } />
+                            <p className='mr-3'>{user?.displayName}</p>
+                            <Link to='/login'><button onClick={handleLogOut} className='btn btn-outline'>Logout</button></Link>
+                        </>
+                        :
+                        <Link to='/login'><button className='btn btn-outline'>Login</button></Link>
+
+                }
+
             </div>
         </div>
     );

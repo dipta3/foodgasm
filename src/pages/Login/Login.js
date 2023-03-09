@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { BsGoogle } from 'react-icons/bs';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
+    const { providerLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider()
+    const handleGoogleSignIN = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
     return (
         <div className="hero mb-10 min-h-screen bg-[url('/src/assets/login.jpg')]">
             <div className='hero-overlay flex justify-center bg-opacity-70'>
@@ -30,7 +44,7 @@ const Login = () => {
                             <p>New to this site? <Link to='/signup' className='text-red-600 cursor-pointer'>SignUp</Link></p>
                         </label>
                         <div className="divider"></div>
-                        <button className='flex self-center align-middle btn font-bold px-14'>
+                        <button onClick={handleGoogleSignIN} className='flex self-center align-middle btn font-bold px-14'>
                             <BsGoogle />
                             <p className='ml-2'>SignIn With Google</p>
                         </button>
