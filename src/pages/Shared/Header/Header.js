@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { BiUser } from 'react-icons/bi';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -40,9 +41,15 @@ const Header = () => {
                 {
                     user?.uid ?
                         <>
-                            <img className="mask mr-2 mask-squircle" alt='' src={user?.photoURL
-                            } />
+
+
                             <p className='mr-3'>{user?.displayName}</p>
+                            {user?.photoURL ?
+                                < img width='30' className="mask mr-2 mask-squircle" alt='' src={user?.photoURL
+                                } />
+                                :
+                                <BiUser />
+                            }
                             <Link to='/login'><button onClick={handleLogOut} className='btn btn-outline'>Logout</button></Link>
                         </>
                         :

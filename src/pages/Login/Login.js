@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsGoogle } from 'react-icons/bs';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const { providerLogin } = useContext(AuthContext);
+    const navigate = useNavigate()
     const googleProvider = new GoogleAuthProvider()
     const handleGoogleSignIN = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate('/');
             })
             .catch(error => {
                 console.error(error)
