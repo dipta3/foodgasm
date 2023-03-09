@@ -4,6 +4,7 @@ import Main from '../../Layout/Main';
 import Foods from '../../pages/Home/Foods/Foods';
 import FoodsDetails from '../../pages/Home/Foods/FoodsDetails/FoodsDetails';
 import Home from '../../pages/Home/Home';
+import Login from '../../pages/Login/Login';
 import ReviewForm from '../../pages/Review/ReviewForm/ReviewForm';
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: '/foods',
                 element: <Foods></Foods>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             },
 
             {
