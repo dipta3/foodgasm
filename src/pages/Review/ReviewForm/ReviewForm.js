@@ -1,9 +1,54 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
-
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { AiFillStar } from 'react-icons/ai';
 const ReviewForm = () => {
-    const { name, img, details, price, rName } = useLoaderData()
+    const { _id, name, img, details, price, rName } = useLoaderData()
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate()
+
+    const handlePlaceReview = event => {
+        event.preventDefault();
+        const form = event.target;
+        const fullName = `${form.firstName.value} ${form.lastName.value}`;
+        const phone = form.phone.value;
+        const email = user?.email || 'unregistered';
+        const photo = user?.photoURL || 'N/A';
+        const message = form.message.value;
+        const ratings = form.ratings.value;
+
+        const review = {
+            reviewId: _id,
+            foodName: name,
+            reviewerName: fullName,
+            email,
+            photo,
+            phone,
+            message,
+            ratings
+
+        }
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    alert('Thanks For Your Feedback')
+                    form.reset()
+                    navigate('/reviews')
+                }
+                console.log(data)
+            })
+            .catch(error => console.error(error))
+
+    }
 
     return (
         <div>
@@ -25,7 +70,7 @@ const ReviewForm = () => {
                 </div>
             </div>
             <div>
-                <h2 className='text-center flex justify-center text-4xl font-extrabold m-5'>Give Your <p className='ml-3'>
+                <h2 className='text-center flex justify-center text-4xl font-extrabold m-5'>Give Your <span className='ml-3'>
                     <Typewriter
                         options={{
                             strings: ['FeedBack'],
@@ -36,39 +81,29 @@ const ReviewForm = () => {
 
                         }}
                     />
-                </p></h2>
-                <form >
+                </span></h2>
+                <form onSubmit={handlePlaceReview}>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 px-10 my-10'>
-                        <input type="text" placeholder="Name" className="input input-bordered w-full " />
-                        <input type="text" placeholder="Your Phone Number" className="input input-bordered w-full " />
-                        <input type="text" placeholder="Email" className="input input-bordered w-full " />
-                        <select className="select w-full">
-                            <option disabled selected>Is that TTJ?</option>
-                            <option>Textured</option>
-                            <option>Tender</option>
-                            <option>Juicy</option>
-                            <option>Other</option>
-                        </select>
-                        <div className='flex'>
-                            <p className='font-semibold'>Is that worth it? Y/N</p>
-                            <input type="checkbox" className="toggle text-center ml-3" />
-                        </div>
+                        <input name='firstName' type="text" placeholder="First Name" className="input input-bordered w-full " required />
+                        <input name='lastName' type="text" placeholder="Last Name" className="input input-bordered w-full " required />
+                        <input name='phone' type="text" placeholder="Your Phone Number" className="input input-bordered w-full " required />
+                        <input type="text" placeholder="Email" className="input input-bordered w-full " defaultValue={user?.email} readOnly />
+                        <input className="input input-bordered w-full " name='photo' placeholder="photo" defaultValue={user?.photoURL} readOnly />
+                        <input name='ttj' type="text" placeholder="Is that TTJ? 'Textured' 'Tender' 'Juicy'" className="input input-bordered w-full " required />
 
-                        <div className="rating">
-                            <input type="radio" name="rating-8" className="mask mask-star-2 bg-orange-400" checked />
-                            <input type="text" placeholder="Rate (1-5)" className="input input-bordered w-full  max-w-xs" />
 
-                        </div>
-
+                        <input name='ratings' type="text" placeholder="Rate (1-5)" className="input input-bordered w-full  max-w-xs" />
+                        <input type="button" value="" required />
                         <div>
-                            <textarea className="textarea textarea-bordered w-full h-24" placeholder="Give Your Review"></textarea>
-                            <input type="submit" className='btn btn-outline my-2' value="Submit Your Order" />
+                            <textarea name='message' className="textarea textarea-bordered w-full h-24" placeholder="Give Your Review"></textarea>
+                            <input type="submit" className='btn btn-outline my-2' value="Submit Your Order" required />
                         </div>
+
                     </div>
                 </form>
 
             </div>
-        </div>
+        </div >
     );
 };
 

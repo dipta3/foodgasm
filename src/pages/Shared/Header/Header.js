@@ -16,7 +16,7 @@ const Header = () => {
     const menuItems = <>
         <li className='font-bold'><Link to='/'>Home</Link></li>
         <li className='font-bold'><Link to='/foods'>Foods</Link></li>
-        <li className='font-bold'><Link to='/'>About Us</Link></li>
+        <li className='font-bold'><Link to='/reviews'>Reviews</Link></li>
     </>
     return (
         <div className="navbar bg-neutral rounded-xl">
