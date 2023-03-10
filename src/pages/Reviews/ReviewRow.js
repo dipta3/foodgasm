@@ -4,7 +4,7 @@ const ReviewRow = ({ review, handleDelete }) => {
     const { _id, reviewId, foodName, reviewerName, email, photo, phone, message, ratings, ttj } = review;
     const [reviewService, setReviewService] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/foods/${reviewId}`)
+        fetch(`https://foodgasm-server-site.vercel.app/foods/${reviewId}`)
             .then(res => res.json())
             .then(data => setReviewService(data))
     }, [reviewId])

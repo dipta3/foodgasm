@@ -39,7 +39,7 @@ const Login = () => {
                     email: user.email
                 }
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://foodgasm-server-site.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -52,10 +52,7 @@ const Login = () => {
                         setError(' ')
                         form.reset()
                         navigate(from, { replace: true });
-                    })
-
-
-
+                    });
 
             })
             .catch(error => {

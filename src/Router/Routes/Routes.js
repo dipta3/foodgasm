@@ -40,13 +40,13 @@ const router = createBrowserRouter([
             {
                 path: '/foods/:id',
                 element: <PrivateRoute><ReviewForm></ReviewForm></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://foodgasm-server-site.vercel.app/foods/${params.id}`)
 
             },
             {
                 path: '/foodsDetails/:id',
                 element: <PrivateRoute><FoodsDetails></FoodsDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://foodgasm-server-site.vercel.app/foods/${params.id}`)
             }
         ]
     }

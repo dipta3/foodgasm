@@ -5,7 +5,7 @@ import { GiFlame } from 'react-icons/gi';
 const Foods = () => {
     const [foods, setFoods] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/foods')
+        fetch('https://foodgasm-server-site.vercel.app/foods')
             .then(res => res.json())
             .then(data => setFoods(data))
     }, [])
