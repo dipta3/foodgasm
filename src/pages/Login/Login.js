@@ -15,12 +15,12 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                
+
                 navigate(from, { replace: true });
                 setError(' ')
             })
             .catch(error => {
-                
+
                 setError(error.message)
             })
     }
@@ -29,13 +29,34 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+
         login(email, password)
             .then(result => {
                 const user = result.user;
-                
-                form.reset()
-                navigate(from, { replace: true });
-                setError(' ')
+
+                //get jwt token
+                const currentUser = {
+                    email: user.email
+                }
+
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('foodGasmToken', data.token);
+                        setError(' ')
+                        form.reset()
+                        navigate(from, { replace: true });
+                    })
+
+
+
+
             })
             .catch(error => {
                 console.error(error)
